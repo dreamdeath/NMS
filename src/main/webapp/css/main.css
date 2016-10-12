@@ -1,0 +1,190 @@
+
+* {font-family: Arial,Helvetica,sans-serif ;
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  src: url('font/orbitron/Orbitron-Bold.ttf'); /* IE9 Compat Modes */
+}
+
+
+html, body
+{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;   
+    background:#000000;
+}
+
+header > hgroup h1 {
+  margin: 0 0 3px 0;
+  padding: 0;
+  text-align: center;
+   font-size: 30px;
+}
+
+
+header > hgroup h2 {
+  margin: 0 0 15px 0;
+  padding: 0;
+  text-align: center;
+  font-style: italic;
+   font-size: 12px;
+}
+
+
+header p {
+  margin: 0 0 20px 0 ;
+  padding: 0;
+  text-align: center;
+   font-size: 12px;
+}
+
+.srvGrpContainer {
+  width: 700px;
+  margin: 10px 0 10px 10px;
+  padding: 35px 40px;
+  background-color: #2d2d2d;
+  border-radius: 5px;
+}
+
+
+fieldset {
+  padding: 0 20px 20px;
+  margin: 0 0 30px ;
+  border: 2px solid #ffffff;
+  background: #B8B8B8 ;
+  border-radius: 5px;
+}
+
+fieldset:hover{
+	border: 2px solid #89E289;
+}
+
+legend {
+  color: #ffffff;
+  background: #990033;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: left;
+  padding: 5px;
+  margin: 0;
+  width: 10em;
+  border: 2px solid #660033;
+  border-radius: 5px;
+ }
+
+
+label {
+  display: block;
+  float: left;
+  clear: left;
+  text-align: left;
+  width: 120px;
+  padding: .4em 0 0 0;
+  margin: .15em 0 0 0;
+}
+
+footer p {
+	text-align: center;
+	font-size: 12px;
+	color: #888;
+	margin-top: 24px;
+}
+
+.serverImgBox  {
+	width : 128px;
+	height : 128px;
+	margin-top: 10px;
+	cursor:pointer;
+}
+.serverImgBox.stop{
+	background:url(../images/server-128-gray.png) no-repeat;
+}
+
+.serverImgBox.run{
+	background:url(../images/server-128-blue.png) no-repeat;
+}
+
+.serverImgBox.error{
+	background:url(../images/server-128-red.png) no-repeat;
+}
+.addServer {
+	display: inline-block;
+	margin: 10px 5px 5px 10px;
+	width : 48px;
+	height : 48px;
+	background:url(../images/add-48-off.png) no-repeat;
+}
+
+a.addServer:hover{
+	cursor:pointer;
+	background:url(../images/add-48-on.png) no-repeat;
+}
+.logServer {
+	display: inline-block;
+	margin: 10px 5px 5px 10px;
+	width : 48px;
+	height : 48px;
+	background:url(../images/log-48-off.png) no-repeat;
+}
+a.logServer:hover{
+	cursor:pointer;
+	background:url(../images/log-48-on.png) no-repeat;
+}
+
+
+.operation {
+	display: inline-block;
+	width : 48px;
+	height : 48px;
+	padding:5px;
+}
+.operation.run{
+	background:url(../images/run-48-on.png) no-repeat;
+}
+.operation.run:hover{
+	cursor:pointer;
+	background:url(../images/run-48-on.png) no-repeat;
+}
+.operation.stop{
+	background:url(../images/stop-48-on.png) no-repeat;
+}
+.operation.stop:hover{
+	cursor:pointer;
+	background:url(../images/stop-48-on.png) no-repeat;
+}
+.operation.info{
+	background:url(../images/info-48-off.png) no-repeat;
+}
+.operation.info:hover{
+	cursor:pointer;
+	background:url(../images/info-48-on.png) no-repeat;
+}
+.operation.del{
+	background:url(../images/del-48-off.png) no-repeat;
+}
+.operation.del:hover{
+	cursor:pointer;
+	background:url(../images/del-48-on.png) no-repeat;
+}
+.serverInfo-text {
+    background-color: #B8B8B8;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    text-shadow: 0px 0px 1px #fff;
+    color: #fff;
+}
+legend.svrGrpLegend {
+    color: #ffffff;
+    background: #70B80B;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: left;
+    padding: 5px;
+    margin: 0;
+    width: 10em;
+    border: 2px solid #00A900;
+    border-radius: 5px;
+    cursor:pointer;

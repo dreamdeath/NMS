@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.web.sqlmappers.server.ServerMapper">
+	<select id="getGroupInfo" parameterType = "ServerGroupVo"  resultType="ServerGroupVo">
+	<![CDATA[
+	SELECT id, group_name
+	FROM tb_server_group
+	WHERE ID = #{id}
+	]]>
+	</select>
+	
+	<select id="getServerInfo" parameterType = "ServerVo" resultType="ServerVo">
+	<![CDATA[
+		SELECT id, server_name, server_ip, server_mac, status, last_upate, grp_id
+		FROM tb_server
+		WHERE id = #{id}
+	]]>
+	</select>
+	
+	<select id="getGroupList" resultType="ServerGroupVo">
+	<![CDATA[
+	SELECT id, group_name
+	FROM tb_server_group
+	ORDER by group_name
+	]]>
+	</select>
+	
+	<select id="getServerList" parameterType = "ServerGroupVo" resultType="ServerVo">
+	<![CDATA[
+		SELECT id, server_name, server_ip, server_mac, status, last_upate, grp_id
+		FROM tb_server
+		WHERE grp_id = #{id}
+		ORDER by server_name
+	]]>
+	</select>
+	
+	<insert id="insertGroupInfo" parameterType = "ServerGroupVo">
+	<![CDATA[
+		INSERT INTO tb_server_group (group_name ) 
+		VALUES(#{group_name})
+	]]>
+	</insert>
+	
+	<insert id="insertServerInfo" parameterType = "ServerVo">
+	<![CDATA[
+		INSERT INTO tb_server (server_name, server_ip, server_mac, status, grp_id) 
+		VALUES(#{server_name},#{server_ip},#{server_mac},#{status},#{grp_id})
+	]]>
+	</insert>
+	
+	<update id="updateGroupInfo" parameterType = "ServerGroupVo">
+	<![CDATA[
+		UPDATE tb_server_group 
+		SET group_name = #{group_name} 
+		WHERE id = #{id}
+	]]>
+	</update>
+	
+	<insert id="updateServerInfo" parameterType = "ServerVo">
+	<![CDATA[
+		UPDATE tb_server
+		SET 
+			server_name = #{server_name} , 
+			server_ip = #{server_ip} , 
+			server_mac = #{server_mac} , 
+			status = #{status} , 
+			grp_id = #{grp_id} 
+		WHERE id = #{id}
+	]]>
+	</insert>
+	
+	<delete id="deleteGroupInfo" parameterType = "ServerGroupVo">
+	<![CDATA[
+		DELETE FROM TB_SERVER_GROUP
+		WHERE ID =  #{id}
+	]]>
+	</delete>
+	
+	<delete id="deleteServerInfo" parameterType = "ServerVo">
+	<![CDATA[
+		DELETE FROM TB_SERVER
+		WHERE ID =  #{id}
+	]]>
+	</delete>
+	
+	<update id="updateServerState" parameterType = "ServerVo">
+		UPDATE tb_server
+		SET 
+		<choose>
+    		<when test="status == 'active'">
+			<![CDATA[
+				status = 1
+			]]>
+			</when>
+			<otherwise>
+			<![CDATA[
+				status = 0
+			]]>
+			</otherwise>
+		</choose>
+		WHERE id = #{id}
+	</update>
+</mapper>

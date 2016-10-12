@@ -1,0 +1,67 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+  text-decoration: none;
+}
+a:hover {
+	 text-decoration: underline;
+}
+
+#thumbGrid {
+	margin:0 auto;
+}
+.addChannel {
+	width: 50px;
+    height: 50px;
+    float: right;
+    margin-right: 10px;
+    background: url(../img/add.png);
+    cursor:pointer;
+}
+.pauseExtract {
+	position:absolute;width:100%;height:100%;
+	background-color:#000000;
+	background-image:url(../img/pause.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.output-center {
+	height:35px;
+	text-align : center;
+}
+.minus-output {
+	float:left;
+}
+#addOutput ,.minus-output{
+	cursor:pointer;
+}
+ul.outputList{
+   list-style:none;
+   }
+ul.outputList li a:hover {
+	border-bottom:2px solid #00B7FF;
+}
+
+ul.outputList li a {
+	color:#FFFFFF;
+    text-decoration: none;
+}
+
+/* setup tooltips */
+.previewThumbnailContainer {
+	position:absolute;
+    display: inline-block;
+    background-color:#fff;
+    border:2px solid #cccccc;	
+    background:#000000;
+    margin:0 auto;
+    text-align:center;
+}
+
+.preview-thumb-content {
+    position: absolute;
+}
