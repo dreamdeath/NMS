@@ -11,15 +11,15 @@ import com.corundumstudio.socketio.listener.DataListener;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 
-//@Component
-public class SocketServer implements ApplicationListener<ApplicationReadyEvent> {
+public class SocketServer {
 	Configuration config = new Configuration();	
-	private SocketIOServer server = null;
-    @Override
-    public void onApplicationEvent(final ApplicationReadyEvent event) {
-    	 System.out.println("소켓 서버 실행");
-    	 config.setHostname("localhost");
-    	 config.setPort(10000); 
+	public SocketIOServer server = null;
+	
+	
+    public SocketIOServer initSocketIO() {
+    	System.out.println("소켓 서버 실행");
+    	config.setHostname("localhost");
+    	config.setPort(10000); 
     	SocketIOServer server = new SocketIOServer(config);
 	    server.addEventListener("chatevent", LogDataObject.class, new DataListener<LogDataObject>() {
 	        public void onData(SocketIOClient client, LogDataObject data, AckRequest ackRequest) {
@@ -40,10 +40,6 @@ public class SocketServer implements ApplicationListener<ApplicationReadyEvent> 
 //	
 //	    server.stop();
 	   
-      return;
+      return server;
     }    
-    public SocketIOServer getSocketIO() {
-    	return server;
-    }
-    
 }

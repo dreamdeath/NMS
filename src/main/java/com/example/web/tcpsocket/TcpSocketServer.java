@@ -7,7 +7,7 @@ import com.corundumstudio.socketio.Configuration;
 import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.DataListener;
-import com.example.web.socketio.SocketServer2;
+import com.example.web.socketio.SocketServer;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -52,7 +52,7 @@ public class TcpSocketServer implements ApplicationListener<ApplicationReadyEven
     public void handleConnection() throws IOException {
     	server = new ServerSocket(9090);
         System.out.println("Waiting for client message...");
-        SocketServer2 socketIOServer = new SocketServer2();
+        SocketServer socketIOServer = new SocketServer();
         SocketIOServer socketIO = socketIOServer.initSocketIO();
         while (true) {
             try {
