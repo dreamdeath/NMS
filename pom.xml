@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.example.web</groupId>
+	<groupId>com.amuzlab.nms</groupId>
 	<artifactId>BootMybatis</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>BootMybatis</name>
 	<description>BootMybatis</description>
@@ -87,13 +87,59 @@
 			<artifactId>netty-socketio</artifactId>
 			<version>1.7.7</version>
 		</dependency>
+		<dependency>
+		  <groupId>org.snmp4j</groupId>
+		  <artifactId>snmp4j</artifactId>
+		  <version>2.5.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.snmp4j</groupId>
+		    <artifactId>snmp4j-agent</artifactId>
+		    <version>2.5.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>1.2.4</version>
+		</dependency>
+		<dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.1.8</version>
+        </dependency>
+        <dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-taglibs</artifactId>
+		    <version>3.1.3.RELEASE</version>
+		</dependency>
 	</dependencies>
 	
 	<build>
+		<finalName>NMS</finalName>		
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.amuzlab.nms.web.ThumbnailNmsApplication</mainClass>
+					<executable>true</executable>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

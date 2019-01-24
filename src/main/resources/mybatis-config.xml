@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>  
-<!DOCTYPE configuration PUBLIC "-//www.mybatis.org//DTD Config 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-config.dtd">  
-
+<!-- <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">-->
+<!-- <!DOCTYPE configuration SYSTEM "dtd/mybatis-3-config.dtd"> -->
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd">
 <!-- Copyright 2010 The myBatis Team Licensed under the Apache License, Version 
 	2.0 (the "License"); you may not use this file except in compliance with 
 	the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
@@ -34,8 +35,10 @@
     </typeHandlers -->
     <typeAliases>
 		<typeAlias alias="HashMap" type="java.util.HashMap" />
-		<typeAlias alias="ServerVo" type="com.example.web.domain.ServerVo" />     
-		<typeAlias alias="ServerGroupVo" type="com.example.web.domain.ServerGroupVo" />
-		<typeAlias alias="LogVo" type="com.example.web.domain.LogVo" />
+		<typeAlias alias="ServerVo" type="com.amuzlab.nms.web.domain.ServerVo" />     
+		<typeAlias alias="ServerGroupVo" type="com.amuzlab.nms.web.domain.ServerGroupVo" />
+		<typeAlias alias="LogVo" type="com.amuzlab.nms.web.domain.LogVo" />
+		<typeAlias alias="RoleVo" type="com.amuzlab.nms.web.domain.RoleVo" />
+		<typeAlias alias="UserVo" type="com.amuzlab.nms.web.domain.UserVo" />
 	</typeAliases>
 </configuration>  

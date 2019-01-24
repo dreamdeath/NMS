@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.web.sqlmappers.log.LogMapper">
+<mapper namespace="com.amuzlab.nms.web.sqlmappers.log.LogMapper">
 
 <insert id="insertLogInfo" parameterType="LogVo">
-	INSERT INTO tb_nms_log (server_id, info, log_type) 	
-	VALUES(#{server_id},#{info},#{log_type})
+	INSERT INTO tb_nms_log (server_id, info,message, log_type,ref_id,code,clear_date) 	
+	VALUES(#{server_id},#{info},#{message},#{log_type},#{ref_id},#{code},#{clear_date})
 </insert>
 
+<select id="selectLogInfo" parameterType="LogVo" resultType="LogVo">
+	select ref_id as id FROM tb_nms_log 
+	WHERE
+	 	ref_id = #{ref_id}
+	 	AND clear_date IS NULL 
+</select>
+
+<update id="updateLogInfo" parameterType="LogVo">
+	UPDATE tb_nms_log SET 
+	clear_date = now()
+	WHERE
+	 	ref_id = #{ref_id}
+	 	AND clear_date IS NULL 
+</update>
+
 <select id="getLogList" parameterType="LogVo" resultType="LogVo">
-	SELECT a.id, a.server_id, a.info, DATE_FORMAT(a.create_date,'%Y-%m-%d %H:%i:%s') create_date, 
+	SELECT a.id, a.server_id, a.info,a.message, a.code,DATE_FORMAT(a.create_date,'%Y-%m-%d %H:%i:%s') create_date, DATE_FORMAT(a.clear_date,'%Y-%m-%d %H:%i:%s') clear_date,a.ref_id, 
 	(
     CASE 
         WHEN a.log_type = 'I' THEN 'INFO'
@@ -18,29 +33,65 @@
     IFNULL(b.server_name,'그룹') AS server_name
 	FROM tb_nms_log a LEFT JOIN tb_server b ON a.server_id = b.id 
 	WHERE 1 = 1
+	<if test="log_type != '' and log_type != null">	
+	AND a.log_type = #{log_type}
+	</if>
 	<if test="search_start != '' and search_start != null">
 	<![CDATA[
-	AND a.CREATE_DATE >= #{search_start}
+	AND a.create_date >= #{search_start}
 	]]>
 	</if>
 	<if test="search_end != '' and search_end != null ">
 	<![CDATA[
-	AND a.CREATE_DATE <= #{search_end}
+	AND a.create_date <= #{search_end}
 	]]>	
 	</if>
 	<if test="sortdatafield != '' and sortdatafield != null ">
 		ORDER BY ${sortdatafield} ${sortorder}
 	</if>
 	<if test="sortdatafield == '' or sortdatafield == null ">
-		ORDER BY CREATE_DATE DESC
+		ORDER BY create_date DESC
 	</if>
 	
 	LIMIT #{recordstartindex} , #{recordendindex} 
 
 
 </select>
+<select id="getActiveLogList" parameterType="LogVo" resultType="LogVo">
+	SELECT a.ref_id ,a.id, a.server_id, a.info, a.message, a.code, DATE_FORMAT(a.create_date,'%Y-%m-%d %H:%i:%s') create_date, DATE_FORMAT(a.clear_date,'%Y-%m-%d %H:%i:%s') clear_date, 
+	(
+    CASE 
+        WHEN a.log_type = 'I' THEN 'INFO'
+        ELSE 'ERROR'
+    END) AS log_type,
+    IFNULL(b.server_name,'그룹') AS server_name
+	FROM tb_nms_log a LEFT JOIN tb_server b ON a.server_id = b.id 
+	WHERE a.log_type = 'E'
+	AND a.clear_date IS NULL AND (a.code = 'E600' OR a.code = 'E700')
+	ORDER BY a.create_date DESC
+	
+</select>
+<select id="getTotalLogCount" resultType="java.lang.Integer">
+	SELECT COUNT(id) AS totalRecords 
+	FROM tb_nms_log
+	WHERE 1 = 1
+	<if test="log_type != '' and log_type != null">	
+	AND log_type = #{log_type}
+	</if>
+	<if test="search_start != '' and search_start != null">
+	<![CDATA[
+	AND create_date >= #{search_start}
+	]]>
+	</if>
+	<if test="search_end != '' and search_end != null ">
+	<![CDATA[
+	AND create_date <= #{search_end}
+	]]>	
+	</if>
+</select>
+
 <delete id="deleteServerInfo" parameterType = "ServerVo">
-	DELETE FROM TB_NMS_LOG
+	DELETE FROM tb_nms_log
 	<if test="search_start == ''">
 	<![CDATA[
 	AND create_date >= #{search_start}
