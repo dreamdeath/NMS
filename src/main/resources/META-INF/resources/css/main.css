@@ -1,0 +1,323 @@
+
+* {font-family: Arial,Helvetica,sans-serif ;
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  src: url('font/orbitron/Orbitron-Bold.ttf'); /* IE9 Compat Modes */
+}
+
+
+html, body
+{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;   
+    background:#000000;
+}
+
+header > hgroup h1 {
+  margin: 0 0 3px 0;
+  padding: 0;
+  text-align: center;
+   font-size: 30px;
+}
+
+
+header > hgroup h2 {
+  margin: 0 0 15px 0;
+  padding: 0;
+  text-align: center;
+  font-style: italic;
+   font-size: 12px;
+}
+
+
+header p {
+  margin: 0 0 20px 0 ;
+  padding: 0;
+  text-align: center;
+   font-size: 12px;
+}
+
+.srvGrpContainer {
+  width: 950px;
+  margin: 10px 0 10px 10px;
+  padding: 35px 40px;
+  background-color: #2d2d2d;
+  border-radius: 5px;
+}
+
+
+fieldset {
+  padding: 0 20px 20px;
+  margin: 0 0 30px ;
+  border: 2px solid #ffffff;
+  background: #B8B8B8 ;
+  border-radius: 5px;
+  position: relative;
+}
+
+fieldset:hover{
+	border: 2px solid #89E289;
+}
+
+legend {
+  color: #ffffff;
+  background: #990033;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: left;
+  padding: 5px;
+  margin: 0;
+  width: 10em;
+  border: 2px solid #660033;
+  border-radius: 5px;
+ }
+
+
+label {
+  display: block;
+  float: left;
+  clear: left;
+  text-align: left;
+  width: 120px;
+  padding: .4em 0 0 0;
+  margin: .15em 0 0 0;
+}
+
+footer p {
+	text-align: center;
+	font-size: 12px;
+	color: #888;
+	margin-top: 24px;
+}
+
+.serverImgBox  {
+	width : 128px;
+	height : 128px;
+	margin-top: 10px;
+	cursor:pointer;
+	background:url(../images/server-128-gray.png) no-repeat;
+}
+.serverImgBox.stop{
+	
+}
+
+.serverImgBox.run{
+	background:url(../images/server-128-blue.png) no-repeat;
+}
+
+.serverImgBox.error{
+	background:url(../images/server-128-red.png) no-repeat;
+}
+.addServer {
+	display: inline-block;
+	margin: 10px 5px 5px 10px;
+	width : 48px;
+	height : 48px;
+	background:url(../images/add-48-off.png) no-repeat;
+}
+
+a.addServer:hover{
+	cursor:pointer;
+	background:url(../images/add-48-on.png) no-repeat;
+}
+.logServer {
+	display: inline-block;
+	margin: 10px 5px 5px 10px;
+	width : 48px;
+	height : 48px;
+	background:url(../images/log-48-off.png) no-repeat;
+}
+a.logServer:hover{
+	cursor:pointer;
+	background:url(../images/log-48-on.png) no-repeat;
+}
+.userMgr {
+	display: inline-block;
+	margin: 10px 5px 5px 10px;
+	width : 48px;
+	height : 48px;
+	border-radius:7px;
+	background:url(../images/user-48-off.png) no-repeat;
+}
+
+a.userMgr:hover{
+	cursor:pointer;
+	background:url(../images/user-48-on.png) no-repeat;
+}
+
+.operation {
+	display: inline-block;
+	width : 48px;
+	height : 48px;
+	padding:5px;
+}
+.operation.run{
+	background:url(../images/run-48-on.png) no-repeat;
+}
+.operation.run:hover{
+	cursor:pointer;
+	background:url(../images/run-48-on.png) no-repeat;
+}
+.operation.stop{
+	background:url(../images/stop-48-on.png) no-repeat;
+}
+.operation.stop:hover{
+	cursor:pointer;
+	background:url(../images/stop-48-on.png) no-repeat;
+}
+.operation.info{
+	background:url(../images/info-48-off.png) no-repeat;
+}
+.operation.info:hover{
+	cursor:pointer;
+	background:url(../images/info-48-on.png) no-repeat;
+}
+.operation.del{
+	background:url(../images/del-48-off.png) no-repeat;
+}
+.operation.del:hover{
+	cursor:pointer;
+	background:url(../images/del-48-on.png) no-repeat;
+}
+
+.operation.log{
+	background:url(../images/log2-48-off.png) no-repeat;
+}
+.operation.log:hover{
+	cursor:pointer;
+	background:url(../images/log2-48-on.png) no-repeat;
+}
+.bindStatusImg {
+	float:left;
+	width:24px;
+	height:24px;
+	padding: 0 5px;
+}
+.bindStatusImg.on{
+	background:url(../images/binding.png) no-repeat;
+}
+.bindStatusImg.off{
+	background:url(../images/unbinding.png) no-repeat;
+}
+
+.serverInfo-text {
+    background-color: #B8B8B8;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    text-shadow: 0px 0px 1px #fff;
+    color: #fff;
+}
+legend.svrGrpLegend {
+    color: #ffffff;
+    background: #70B80B;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: left;
+    padding: 5px;
+    margin: 0;
+    width: 10em;
+    border: 2px solid #00A900;
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+.horizontalCross {
+    position: absolute;
+    background-color: #7E7E7E;
+    width: 2.4em;
+    height: .7em;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.verticalCross {
+    position: absolute;
+    background-color: #7E7E7E;
+    width: .7em;
+    height: 2.4em;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.horizontalCross.over, .verticalCross.over{
+	background-color: #FFFFFF;
+}
+.addServerTitle {
+	position: absolute;
+	color : #FFFFFF;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
+a.addServerBox {
+	position: relative;width: 75%;height: 100px;
+	border-style: solid;
+	border-color: #7E7E7E;
+	border-width: 5px;
+	float:left;background: url(../images/Server-100.png) no-repeat;background-position: center;text-align: center;
+	 margin:0 10px 10px 0;
+}
+a.addServerBox:hover {
+	border-color :#FFFFFF;
+}
+
+.alarmSound{
+	width:48px;
+	height:48px;	
+	cursor:pointer;
+}
+
+.alarmSound.on{
+	background:url(../images/sound-32-on.png) no-repeat;
+}
+
+.alarmSound.off{
+	background:url(../images/sound-32-off.png) no-repeat;
+}
+
+.txt12 {
+	font-size:12px !important;
+}
+
+.nicLampWrapper {
+	float: right;
+    padding-left: 20px;
+    border: 1px solid #2D2D2D;
+    width: 230px;
+    height: 100%;
+    padding: 10px;
+    background: #787878;
+    border-radius: 3px;
+    font-size:12px;
+    margin-top: 10px;
+}
+.ifLamp {
+	float: right;
+    width: 30px;
+    height: 10px;    
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 1px;
+}
+.ifLamp.up {
+	background: #3DAF2C;
+}
+
+.ifLamp.down {
+	background: #C4001A;
+}
+.ifCategory {
+	border-bottom: 1px solid #2D2D2D;
+    display: inline-block;
+    padding:0 5px;
+}
+}

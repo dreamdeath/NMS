@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.amuzlab.nms.web.sqlmappers.user.UserMapper">
+
+<select id="getUserInfo" parameterType="UserVo">
+	SELECT userid, username, password,email FROM tb_users 
+	where userid = ${userId}
+</select>
+
+<select id="getUserInfoList" parameterType="UserVo" resultType="UserVo">
+	SELECT a.userid, a.password, a.email,a.username, c.roleid,c.rolename	
+	FROM tb_users a LEFT JOIN tb_user_role b ON a.userid = b.userid
+	LEFT JOIN tb_role c ON b.roleid = c.roleid 
+	<![CDATA[
+	WHERE c.roleid <> '0'
+	]]>
+	ORDER BY c.roleid, a.userid
+
+</select>
+
+<select id="getRoleInfoList" resultType="RoleVo">
+	SELECT roleid, rolename
+	FROM tb_role 
+	<![CDATA[
+	WHERE roleid <> '0'
+	]]>
+	ORDER BY roleid
+</select>
+
+<insert id="insertUserInfo" parameterType="UserVo">
+	INSERT INTO tb_users (userid, username,password,email) 	
+	VALUES(#{userid},#{username},#{password},#{email})
+</insert>
+
+<insert id="insertUserRoleInfo" parameterType="UserVo">
+	INSERT INTO tb_user_role (userid, roleid) 	
+	VALUES(#{userid},#{roleid})
+</insert>
+
+<update id="updateUserInfo" parameterType = "ServerGroupVo">
+	UPDATE tb_users
+	SET 
+		userid = #{userid},
+		<if test="username != '' and username != null ">
+			username = #{username} , 
+		</if>
+		<if test="password != '' and password != null ">
+			password = #{password},			
+		</if>
+		<if test="email != '' and email != null ">
+			email = #{email}		
+		</if>
+	WHERE userid = #{userid}
+</update>
+
+
+<update id="updateUserRoleInfo" parameterType = "ServerGroupVo">
+	UPDATE tb_user_role
+	SET 
+		userid = #{userid},
+		<if test="roleid != '' and roleid != null ">
+			roleid = #{roleid}
+		</if>
+	WHERE userid = #{userid}
+</update>
+
+<delete id="deleteUserInfo" parameterType = "UserVo">
+	DELETE FROM tb_users
+	WHERE userid = #{userid}
+</delete>
+
+<delete id="deleteUserRoleInfo" parameterType = "UserVo">
+	DELETE FROM tb_user_role
+	WHERE userid = #{userid}
+</delete>
+
+
+</mapper>
